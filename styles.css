@@ -1,0 +1,144 @@
+.body {
+    
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .first.section {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .first.section .input {
+    margin-top: 10px;
+  }
+  
+  .cart {
+    margin-top: 20px;
+  }
+  
+  .cart h2 {
+    color: #ff4500;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  
+  .cart table {
+    width: 100%;
+  }
+  
+  .cart table th,
+  .cart table td {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .cart table th {
+    background-color: #f9f9f9;
+    color: #333333;
+  }
+  
+  .cart table td {
+    background-color: #ffffff;
+  }
+  
+  .cart table tr:last-child td {
+    font-weight: bold;
+  }
+  
+  .messege {
+    background-color: #ff4500;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .messege1 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff4500;
+    margin-bottom: 10px;
+  }
+  
+  .btn {
+    background-color: #ff4500;
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .btn:hover {
+    background-color: #ff5722;
+  }
+  
+  .b5 {
+    background-color: #66bb6a;
+    color: #ffffff;
+  }
+  
+  .b5:hover {
+    background-color: #81c784;
+  }
+  
+  .pizzas1.table {
+    margin-top: 20px;
+  }
+  
+  .pizzas1.table table {
+    width: 100%;
+  }
+  
+  .pizzas1.table table th,
+  .pizzas1.table table td {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .pizzas1.table table th {
+    background-color: #f9f9f9;
+    color: #333333;
+  }
+  
+  .pizzas1.table table td {
+    background-color: #ffffff;
+  }
+  
+  .pizzas1.table button {
+    background-color: #ff4500;
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .pizzas1.table button:hover {
+    background-color: #ff5722;
+  }
+  .input input[type="text"],
+.input input[type="number"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.input input[type="text"]::placeholder,
+.input input[type="number"]::placeholder {
+  color: #999;
+}
+
+.input input[type="text"]:focus,
+.input input[type="number"]:focus {
+  border-color: #ff4500;
+  outline: none;
+}
+
+  

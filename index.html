@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Perfect Pizza</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="app.js" defer></script>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("./image/Pizza-Dough-23-5.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff4500;
+        }
+
+        .top-section {
+            background-color: rgba(97, 44, 44, 0.8);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .top-section h2 {
+            color: #ff4500;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+
+        .top-section p {
+            color: #808080;
+            margin: 0;
+            margin-bottom: 5px;
+        }
+
+        .pizza-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .pizza {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            color: #333333;
+        }
+
+        .pizza .heading {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .pizza .heading h2 {
+            color: #ff4500;
+            margin: 0;
+        }
+
+        .pizza .heading h3 {
+            color: #808080;
+            margin: 0;
+        }
+
+        .pizza .photo {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .pizza .content {
+            text-align: center;
+        }
+
+        .pizza .content div {
+            margin-bottom: 10px;
+        }
+
+        .pizza button {
+            background-color: #ff4500;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .pizza button:hover {
+            background-color: #ff5722;
+        }
+
+        .message {
+            background-color: #ff4500;
+            color: #ffffff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .pizza .add-remove-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .pizza .add-remove-buttons button {
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .pizza .add-remove-buttons .add-button {
+            background-color: #66bb6a;
+            color: #ffffff;
+        }
+
+        .pizza .add-remove-buttons .remove-button {
+            background-color: #ef5350;
+            color: #ffffff;
+        }
+        .flavors-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .flavors-heading {
+            color: #ff4500;
+            margin-top: 0;
+            margin-bottom: 10px;
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Perfect Pizza With API</h1>
+
+        <div class="top-section">
+            <h2>Welcome to Perfect Pizza</h2>
+            <p>Experience the finest pizza flavors in town!</p>
+            <p>Place your order and enjoy our delicious pizzas delivered right to your doorstep.</p>
+        </div>
+
+        <div class="pizza-container">
+
+          <div class="pizza small_pizza">
+              <div class="heading">
+                  <h2>Small Pizza</h2>
+                  <h3>R49.99</h3>
+              </div>
+              <div class="photo">
+                  <img src="./image/small.png" width="100px">
+              </div>
+              <div class="content">
+                  <div>Small Pizza for only R49.99</div>
+                  <div class="add-remove-buttons">
+                      <button class="add-button" @click="addToCart('small')">Add</button>
+                      <button class="remove-button" @click="removeFromCart('small')">Remove</button>
+                  </div>
+                  <button class="buy-button">Buy</button>
+              </div>
+          </div>
+          <div class="pizza medium_pizza">
+              <div class="heading">
+                  <h2>Medium Pizza</h2>
+                  <h3>R79.99</h3>
+              </div>
+              <div class="photo">
+                  <img src="./image/pizza-box.png" width="100px">
+              </div>
+              <div class="content">
+                  <div>Medium Pizza for only R79.99</div>
+                  <div class="add-remove-buttons">
+                      <button class="add-button" @click="addToCart('medium')">Add</button>
+                      <button class="remove-button" @click="removeFromCart('medium')">Remove</button>
+                  </div>
+                  <button class="buy-button">Buy</button>
+              </div>
+          </div>
+          <div class="pizza large_pizza">
+              <div class="heading">
+                  <h2>Large Pizza</h2>
+                  <h3>R169.99</h3>
+              </div>
+              <div class="photo">
+                  <img src="./image/pizza (1).png" width="100px">
+              </div>
+              <div class="content">
+                  <div>Large Pizza for only R169.99</div>
+                  <div class="add-remove-buttons">
+                      <button class="add-button" @click="addToCart('large')">Add</button>
+                      <button class="remove-button" @click="removeFromCart('large')">Remove</button>
+                  </div>
+                  <button class="buy-button">Buy</button>
+              </div>
+          </div>
+      </div>
+      
+
+        <div class="body" x-data="pizzaCartWithAPIWidget">
+        <div class="first section">
+            <div style="text-align: center;" x-text="message"></div><br>
+            Order ID: <strong x-text="cartId"></strong>
+            <div class="input">
+                Customer Name: <input type="text" x-model="username" placeholder="Customer name">
+            </div>
+            Flavours Available: <strong x-text="pizzas.length"></strong>
+            <div>
+                Total Price: R<strong x-text="cart.total.toFixed(2)"></strong>
+            </div>
+        </div><br>
+
+        <div>
+            <div x-show="cart.total.toFixed(2)>0" class="pizzas1 cart">
+                <table class="table-auto">
+                    <tr>
+                        <td colspan="5">
+                            <div class="1">
+                                <h2>Added to Cart</h2>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Flavour</th>
+                        <th>Size</th>
+                        <th>Add or Cancel</th>
+                        <th>Number of Pizza(s)</th>
+                        <th>Total</th>
+                    </tr>
+
+                    <template x-for="pizza in cart.pizzas">
+                        <tr>
+                            <td x-text="pizza.flavour"></td>
+                            <td x-text="pizza.size"></td>
+                            <td>
+                                <button x-on:click="add(pizza)">Add</button>
+                                <button x-on:click="remove(pizza)">Remove</button>
+                            </td>
+                            <td x-text="pizza.qty"></td>
+                            <td x-text="pizza.total.toFixed(2)"></td>
+                        </tr>
+                    </template>
+                    <tr>
+                        <td colspan="4">Total</td>
+                        <td>
+                            R<span x-text="cart.total.toFixed(2)"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <div x-show="payNow">
+                                <div class="messege" x-text="paymentMessage">Message....</div><br>
+                                <div class="b1">
+                                    <div>
+                                        <label for="">Enter Amount</label>
+                                        <input class="input" type="number" placeholder="Amount" x-model="paymentAmount">
+                                    </div><br>
+                                    Change is: R
+                                    <div x-show="change > 0" class="messege1" x-text="change.toFixed(2)"></div><br>
+                                    <div>
+                                        <button x-on:click="pay" class="btn">
+                                            <img src="./image/payment1.png" width="20" alt="">Pay</button>
+                                    </div><br>
+
+                                </div>
+                            </div>
+
+                            <td>
+                                <button x-show="!payNow" x-on:click="payNow=true" class="b5">
+                                    <img src="./image/cart.png" width="20" alt="">Check Out
+                                </button>
+                            </td>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="pizzas1 table">
+            <table>
+                <tr>
+                    <th><b>Pizza</b></th>
+                    <th><b>Flavour(s)</b></th>
+                    <th><b>Size</b></th>
+                    <th><b>Price</b></th>
+                    <th><b>Add to cart</b></th>
+                </tr>
+                <template x-for="pizza in pizzas">
+                    <tr>
+                        <td>
+                            <img x-bind:src="pizzaImage(pizza)" width="40px" alt="">
+                        </td>
+                        <td x-text="pizza.flavour"></td>
+                        <td x-text="pizza.size"></td>
+                        <td x-text="pizza.price"></td>
+                        <td><button x-on:click="add(pizza)">Buy</button></td>
+                    </tr>
+                </template>
+            </table>
+          </div>
+        </div>
+        <div class="pizza contact">
+            <div class="heading">
+                <h2>Contact details</h2>
+                <p>contact us: 012 875 5412</p>
+                <p>www.perfectpizza.co.za</p>
+                <p>@perfectpizza</p>
+            </div>
+            <div class="content" style="text-align: right;">
+                <div class="photo">
+                    <img src="./image/pizza-deliver.png" width="200">
+                </div>
+                We also deliver straight to your door!
+            </div>
+        </div>
+    </body>
+    
+    </html>
+
+
+
